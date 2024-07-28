@@ -11,12 +11,16 @@ let botScoreEl = document.getElementById('botScoreEl')
 let myScore = Number(localStorage.getItem('myScore'))
 let botScore = Number(localStorage.getItem('botScore'))
 
+myScoreEl.innerText = myScore
+botScoreEl.innerText = botScore
+
+
 
 function getDeck() {
   const url = 'https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
-  myScoreEl.innerText = `Score: ${0}`
-  botScoreEl.innerText = `Score: ${0}`
+  myScoreEl.innerText = 0
+  botScoreEl.innerText = 0
 
   fetch(url)
     .then(res => res.json()) // parse response as JSON
@@ -69,10 +73,10 @@ function determineWinner(cards, c1, c2) {
 
   if (c1 > c2) {
     myScore += 1
-    myScoreEl.innerText = `Score: ${myScore}`
+    myScoreEl.innerText = `${myScore}`
   } else if (c1 < c2) {
     botScore += 1
-    botScoreEl.innerText = `Score: ${botScore}`
+    botScoreEl.innerText = `${botScore}`
   }
 
   localStorage.setItem('myScore', myScore)
