@@ -15,6 +15,9 @@ let botScore = Number(localStorage.getItem('botScore'))
 function getDeck() {
   const url = 'https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
+  myScoreEl.innerText = `Score: ${0}`
+  botScoreEl.innerText = `Score: ${0}`
+
   fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -27,8 +30,6 @@ function getDeck() {
 
       localStorage.setItem('myScore', myScore)
       localStorage.setItem('botScore', botScore)
-      myScoreEl.innerText = `Score: ${0}`
-      botScoreEl.innerText = `Score: ${0}`
     })
     .catch(err => {
       console.log(`error ${err}`)

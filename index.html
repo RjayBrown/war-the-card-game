@@ -14,20 +14,38 @@
 </head>
 
 <body>
-
-	<h1>Let's Play War!</h1>
-
-	<button id="newGame" type="button" name="button">New Game</button>
-
-	<h2>Player 1</h2>
-	<span id="myScoreEl">Score:</span>
-	<img id="player1" src="" alt="">
-
-	<button id="draw" type="button" name="button">Draw</button>
-
-	<h2>Player 2</h2>
-	<span id="botScoreEl">Score:</span>
-	<img id="player2" src="" alt="">
+	<main>
+		<section class="container col">
+			<h1>Let's Play War!</h1>
+			<button id="newGame" type="button" name="button">New Game</button>
+		</section>
+		<section class="container three">
+			<section class="container col">
+				<h1>Player 1</h1>
+				<h2>Score</h2>
+				<h2 id="myScoreEl"></h2>
+			</section>
+			<section class="container col">
+				<a id="draw" type="button" name="button"><img id="deck"
+						src="https://www.deckofcardsapi.com/static/img/back.png" alt=""></a>
+			</section>
+			<section class="container col">
+				<h2>Player 2</h2>
+				<h2>Score</h2>
+				<h2 id="botScoreEl"></h2>
+			</section>
+		</section>
+		<section class="container three">
+			<section class="container col">
+				<img id="player1" src="" alt="">
+			</section>
+			<section class="container col">
+			</section>
+			<section class="container col">
+				<img id="player2" src="" alt="">
+			</section>
+		</section>
+	</main>
 
 	<script type="text/javascript" src="js/main.js"></script>
 </body>

@@ -19,3 +19,27 @@ img{
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+.container {
+  display:flex;
+  place-content: center center;
+}
+
+.container.three > * {
+  flex: 1;
+  margin: 5%;
+  text-align: center;
+}
+
+.container.col {
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1 + button {
+  width: 30%;
+  margin: auto
+}
