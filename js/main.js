@@ -8,8 +8,8 @@ let cardImg2 = document.getElementById('player2')
 let myScoreEl = document.getElementById('myScoreEl')
 let botScoreEl = document.getElementById('botScoreEl')
 
-let myScore = localStorage.getItem('myScore')
-let botScore = localStorage.getItem('myScore')
+let myScore = Number(localStorage.getItem('myScore'))
+let botScore = Number(localStorage.getItem('botScore'))
 
 
 function getDeck() {
