@@ -13,10 +13,14 @@ let warEl = document.getElementById('war')
 let myCount = Number(localStorage.getItem('myCount'))
 let botCount = Number(localStorage.getItem('botCount'))
 
+let myPile
+let botPile
+
+let myUrl
+let botUrl
+
 myCountEl.innerText = myCount
 botCountEl.innerText = botCount
-
-
 
 function getDeck() {
   const url = 'https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
@@ -35,9 +39,31 @@ function getDeck() {
       cardImg2.src = ''
       myCount = 0
       botCount = 0
+      myPile = []
+      botPile = []
 
+      let deckId = localStorage.getItem('deckId')
       localStorage.setItem('myCount', myCount)
       localStorage.setItem('botCount', botCount)
+
+      myUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mypile/add/?cards=`
+      botUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botpile/add/?cards=`
+      fetch(myUrl)
+        .then(res => res.json()) // parse response as JSON
+        .then(data => {
+          console.log(data)
+        })
+        .catch(err => {
+          console.log(`error ${err}`)
+        });
+      fetch(botUrl)
+        .then(res => res.json()) // parse response as JSON
+        .then(data => {
+          console.log(data)
+        })
+        .catch(err => {
+          console.log(`error ${err}`)
+        });
     })
     .catch(err => {
       console.log(`error ${err}`)
@@ -55,8 +81,8 @@ function draw() {
     .then(data => {
       console.log(data)
       let cards = data.cards
-      let myCard = cards[0].value
-      let botCard = cards[1].value
+      let myCard = cards[0]
+      let botCard = cards[1]
 
       cardImg1.src = cards[0].image
       cardImg2.src = cards[1].image
@@ -69,6 +95,14 @@ function draw() {
 }
 
 function determineWinner(cards, c1, c2, cardsWon) {
+  let deckId = localStorage.getItem('deckId')
+
+  myUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mypile/add/?cards=`
+  botUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botpile/add/?cards=`
+
+  myList = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mypile/list`
+  botList = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botpile/list`
+
   for (let card in cards) {
     card.value = 'ACE' ? card.value = 14
       : card.value = 'KING' ? card.value = 13
@@ -77,10 +111,42 @@ function determineWinner(cards, c1, c2, cardsWon) {
             : card.value = Number(card.value)
   }
 
-  if (c1 > c2) {
+  if (c1.value > c2.value) {
     myCount += cardsWon
-  } else if (c1 < c2) {
+    fetch(myUrl + `${c1.code},${c2.code}`)
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+        // console.log(data)
+      })
+      .catch(err => {
+        console.log(`error ${err}`)
+      });
+    fetch(myList)
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+        console.log(data.piles.mypile.cards)
+      })
+      .catch(err => {
+        console.log(`error ${err}`)
+      });
+  } else if (c1.value < c2.value) {
     botCount += cardsWon
+    fetch(botUrl + `${c1.code},${c2.code}`)
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+        // console.log(data)
+      })
+      .catch(err => {
+        console.log(`error ${err}`)
+      });
+    fetch(botList)
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+        console.log(data.piles.botpile.cards)
+      })
+      .catch(err => {
+        console.log(`error ${err}`)
+      });
   } else {
     warEl.innerHTML = `<button id='war'>WAR!!!</button>`
   }
@@ -101,8 +167,8 @@ function war() {
     .then(data => {
       console.log(data)
       let cards = data.cards
-      let myCard = cards[6].value
-      let botCard = cards[7].value
+      let myCard = cards[6]
+      let botCard = cards[7]
 
       cardImg1.src = cards[6].image
       cardImg2.src = cards[7].image
