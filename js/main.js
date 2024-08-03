@@ -1,28 +1,62 @@
-document.querySelector('#newGame').addEventListener('click', getDeck)
+localStorage.getItem('theme')
+
+document.querySelector('#startGame').addEventListener('click', getDeck)
+document.querySelector('#toggle').addEventListener('click', toggleMode)
+
+let bg = document.querySelector('body')
+let title = document.querySelector('.title')
 
 let cardImg1 = document.getElementById('player1')
 let cardImg2 = document.getElementById('player2')
 
+let startBtn = document.querySelector('#startGame')
+let toggleBtn = document.querySelector('#toggle')
 let myCountEl = document.getElementById('myCountEl')
 let botCountEl = document.getElementById('botCountEl')
-let warEl = document.querySelector('.war')
+let warEl = document.querySelector('.warEl')
 let p1El = document.querySelector('#p1')
 let p2El = document.querySelector('#p2')
 
 let myCount = Number(localStorage.getItem('myCount'))
 let botCount = Number(localStorage.getItem('botCount'))
 
-let myUrl
-let botUrl
+// for using piles
+// let myUrl
+// let botUrl
 
 myCountEl.innerText = myCount
 botCountEl.innerText = botCount
+
+/* TOGGLE LIGHT OR DARK MODE */
+
+function toggleMode() {
+  let theme = Array.from(bg.classList)[0]
+  if (theme === 'reg') {
+    bg.classList.remove('reg')
+    bg.classList.add('dark')
+  } else if (theme === 'dark') {
+    bg.classList.remove('dark')
+    bg.classList.add('light')
+    title.classList.add('red')
+  } else if (theme === 'light') {
+    bg.classList.remove('light')
+    bg.classList.add('war-bg')
+    title.classList.remove('red')
+  } else {
+    bg.classList.remove('war-bg')
+    bg.classList.add('reg')
+  }
+  // localStorage.setItem('theme', theme)
+}
+
+/* START GAME */
 
 function getDeck() {
   document.querySelector('#draw').addEventListener('click', draw)
 
   const url = 'https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
+  startBtn.innerText = 'NEW GAME'
   myCountEl.innerText = 26
   botCountEl.innerText = 26
   warEl.innerText = ''
@@ -40,35 +74,42 @@ function getDeck() {
       p1El.innerText = ''
       p2El.innerText = ''
 
-      let deckId = localStorage.getItem('deckId')
       localStorage.setItem('myCount', myCount)
       localStorage.setItem('botCount', botCount)
 
-      myUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mypile/add/?cards=`
-      botUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botpile/add/?cards=`
-      fetch(myUrl)
-        .then(res => res.json()) // parse response as JSON
-        .then(data => {
-          console.log(data)
-        })
-        .catch(err => {
-          console.log(`error ${err}`)
-        });
-      fetch(botUrl)
-        .then(res => res.json()) // parse response as JSON
-        .then(data => {
-          console.log(data)
-        })
-        .catch(err => {
-          console.log(`error ${err}`)
-        });
+
+      /* USING PILES TO KEEP TRACK OF CARDS  */
+
+      // let deckId = localStorage.getItem('deckId')
+
+      // myUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mypile/add/?cards=`
+      // botUrl = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botpile/add/?cards=`
+      // fetch(myUrl)
+      //   .then(res => res.json()) // parse response as JSON
+      //   .then(data => {
+      //     console.log(data)
+      //   })
+      //   .catch(err => {
+      //     console.log(`error ${err}`)
+      //   });
+      // fetch(botUrl)
+      //   .then(res => res.json()) // parse response as JSON
+      //   .then(data => {
+      //     console.log(data)
+      //   })
+      //   .catch(err => {
+      //     console.log(`error ${err}`)
+      //   });
     })
     .catch(err => {
       console.log(`error ${err}`)
     })
 }
 
+/* DRAW */
+
 function draw() {
+  // Draw function must change if using piles
   let deckId = localStorage.getItem('deckId')
   const url = `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`
   const shuffle = `https://www.deckofcardsapi.com/api/deck/${deckId}/shuffle/`
@@ -121,6 +162,7 @@ function draw() {
 }
 
 function determineWinner(cards, c1, c2, cardsWon) {
+  // figure out how to add war count - # to multiply draw cards in war function API call
 
   for (let card in cards) {
     card.value = 'ACE' ? card.value = 14
@@ -133,6 +175,7 @@ function determineWinner(cards, c1, c2, cardsWon) {
   if (c1.value > c2.value) {
     myCount += cardsWon
     botCount -= cardsWon
+    document.querySelector('#draw').addEventListener('click', draw)
     if (+botCount <= 0) {
       botCount = 0
       myCount = 52
@@ -142,6 +185,7 @@ function determineWinner(cards, c1, c2, cardsWon) {
   } else if (c1.value < c2.value) {
     botCount += cardsWon
     myCount -= cardsWon
+    document.querySelector('#draw').addEventListener('click', draw)
     if (+myCount <= 0) {
       myCount = 0
       botCount = 52
@@ -149,7 +193,9 @@ function determineWinner(cards, c1, c2, cardsWon) {
       endGame()
     }
   } else {
-    warEl.innerHTML = `<button id='war'>WAR!!!</button>`
+    bg.classList.add('war')
+    title.classList.remove('red')
+    warEl.innerHTML = `<button id='war'>WAR!</button>`
     document.querySelector('#draw').removeEventListener('click', draw)
     document.querySelector('#war').addEventListener('click', war)
   }
@@ -166,6 +212,8 @@ function war() {
   const url = `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=8`
   const shuffle = `https://www.deckofcardsapi.com/api/deck/${deckId}/shuffle/`
 
+  bg.classList.remove('war')
+
   fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
@@ -175,6 +223,9 @@ function war() {
           .then(res => res.json()) // parse response as JSON
           .then(data => {
             console.log(data)
+            warEl.innerHTML = `<button id='war'>WAR!</button>`
+            document.querySelector('#draw').removeEventListener('click', draw)
+            document.querySelector('#war').addEventListener('click', war)
           })
           .catch(err => {
             console.log(`error ${err}`)
@@ -188,11 +239,11 @@ function war() {
       cardImg2.src = cards[7].image
 
       determineWinner(cards, myCard, botCard, 10)
-      document.querySelector('#draw').addEventListener('click', draw)
     })
     .catch(err => {
       console.log(`error ${err}`)
     });
+
 
   warEl.innerText = ''
 
@@ -202,10 +253,14 @@ function war() {
 
 function endGame() {
   if (+myCount === 0) {
-    p2El.innerText = 'BOT WINS!!'
+    p2El.classList.add('winner')
+    p2El.innerText = 'BOT WINS!'
+    startBtn.innerText = 'REMATCH'
     document.querySelector('#draw').removeEventListener('click', draw)
   } else if (+botCount === 0) {
-    p1El.innerText = 'YOU WIN!!'
+    p1El.classList.add('winner')
+    p1El.innerText = 'YOU WIN!'
+    startBtn.innerText = 'REMATCH'
     document.querySelector('#draw').removeEventListener('click', draw)
   }
 }

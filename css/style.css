@@ -10,15 +10,40 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-img{
-  display: block;
-  margin: 0 auto;
+
+/* LG */
+
+body {
+  padding: 2% 20%;
+  font-family: "Itim";
 }
 
+.reg {
+  background-color: rgb(33, 55, 55);
+  color: white;
+}
 
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+.dark {
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+
+.red {
+  color: rgb(155, 0, 0)
+}
+
+.light {
+  background-color: rgb(235, 235, 235);
+  color: rgb(0, 0, 0);
+}
+
+.war,
+.war-bg {
+  background-image: url('../img/war.jpg');
+  background-color: rgb(0, 0, 0, 0.45);
+  background-blend-mode: overlay;
+  color: white;
+}
 
 .container {
   display:flex;
@@ -27,7 +52,7 @@ img{
 
 .container.three > * {
   flex: 1;
-  margin: 5%;
+  margin: 1.5%;
   text-align: center;
 }
 
@@ -35,11 +60,122 @@ img{
   flex-direction: column;
 }
 
+/* SM + MED */
+
+@media screen and (max-width: 860px) {
+  body {
+    padding: 15% 5%;
+  }
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+/* LG */
+
+a img {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  border-radius: 5%;
+  transition: padding 150ms;
+}
+
+a img:active {
+  background-color: black;
+  padding: .25%;
+}
+
+.container.col > img {
+  margin: 0 auto;
+  width: 65%;
+}
+
 h1 {
   text-align: center;
+  text-wrap: nowrap;
+  font-size: 2.5rem;
+  margin: 0 auto;
+}
+
+h1.title {
+  font-size: 3.5rem;
+  margin: 2.5% auto;
+}
+
+h2,
+.winner {
+  text-decoration: underline;
+  text-decoration-color: rgb(155, 0, 0);
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
+}
+
+.winner {
+  color: goldenrod;
+}
+
+button {
+  text-wrap: nowrap;
+  width: 150px;
+  margin: 2%;
+  padding: 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(23, 23, 23);
+  transition: background-color 250ms, color 250ms;
+}
+
+button:hover {
+  background-color: rgb(15, 15, 15);
+  padding: 13px;
+  border: 2px solid black;
+  /* color: rgb(59, 149, 239); */
+  color: goldenrod;
+}
+
+button:active {
+  background-color: rgb(10, 10, 10);
+  color: rgb(255, 219, 128)
+}
+
+button#war {
+  width: 80%;
+  margin: auto;
 }
 
 h1 + button {
-  width: 30%;
-  margin: auto
+  width: 33%;
+  margin: 1.5% auto
+}
+
+/* SM + MED */
+
+@media screen and (max-width: 860px) {
+
+  .container.col > img {
+    margin: 15% auto;
+    width: 90%;
+  }
+
+  a img {
+    display: block;
+    margin: 15% auto;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h1.title {
+    font-size: 2.5rem;
+  }
 }

@@ -5,46 +5,59 @@
 	<meta charset="utf-8">
 	<meta name="description" content="This is where your description goes">
 	<meta name="keywords" content="one, two, three">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Title in the tab</title>
+	<title>WAR!</title>
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 	<!-- external CSS link -->
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="reg">
 	<main>
 		<section class="container col">
-			<h1>War!</h1>
-			<button id="newGame" type="button" name="button">New Game</button>
+			<h1 class="title">WAR!</h1>
+			<section class="container">
+				<button id="startGame" type="button" name="button">NEW GAME</button>
+				<button id="toggle" type="button" name="button">TOGGLE THEME</button>
+			</section>
 		</section>
 		<section class="container three">
-			<section class="container col">
-				<h1>Player 1</h1>
-				<h2>Score</h2>
-				<h2 id="myCountEl"></h2>
+			<section>
+				<section class="container col">
+					<h1>PLAYER 1</h1>
+					<h2>CARDS LEFT</h2>
+					<h1 id="myCountEl"></h1>
+				</section>
 			</section>
 			<section class="container col">
 				<a id="draw" type="button" name="button"><img id="deck"
 						src="https://www.deckofcardsapi.com/static/img/back.png" alt=""></a>
 			</section>
-			<section class="container col">
-				<h1>Player 2</h1>
-				<h2>Score</h2>
-				<h2 id="botCountEl"></h2>
+			<section>
+				<section class="container col">
+					<h1>PLAYER 2</h1>
+					<h2>CARDS LEFT</h2>
+					<h1 id="botCountEl"></h1>
+				</section>
 			</section>
 		</section>
 		<section class="container three">
 			<section class="container col">
 				<img id="player1" src="" alt="">
-				<h1 id="p1"></h1>
+				<h2 id="p1"></h2>
 			</section>
-			<section class="container col war">
+			<section class="container col warEl">
 			</section>
 			<section class="container col">
 				<img id="player2" src="" alt="">
-				<h1 id="p2"></h1>
+				<h2 id="p2"></h2>
 			</section>
 		</section>
 	</main>
