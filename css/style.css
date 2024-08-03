@@ -39,13 +39,16 @@ body {
 
 .war-bg {
   background-image: url('../img/war.jpg');
-  background-color: rgb(0, 0, 0, 0.45);
+  background-color: rgb(0, 0, 0, 0.6);
   background-blend-mode: overlay;
   color: white;
 }
 
 .war {
-  background-color: rgba(30, 0, 0, 0.45);
+  background-image: url('../img/war.jpg');
+  background-color: rgba(25, 0, 0, 0.50);
+  background-blend-mode: overlay;
+  color: white;
 }
 
 .container {
@@ -81,7 +84,7 @@ body {
 a img {
   display: block;
   margin: 0 auto;
-  width: 60%;
+  width: 70%;
   border-radius: 5%;
   transition: padding 150ms;
 }
@@ -110,6 +113,7 @@ h1.title {
 
 h2,
 .winner {
+  text-wrap: nowrap;
   text-decoration: underline;
   text-decoration-color: rgb(155, 0, 0);
   text-decoration-thickness: 5px;

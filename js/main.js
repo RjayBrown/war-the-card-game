@@ -46,7 +46,6 @@ function toggleMode() {
     bg.classList.remove('war-bg')
     bg.classList.add('reg')
   }
-  // localStorage.setItem('theme', theme)
 }
 
 /* START GAME */
