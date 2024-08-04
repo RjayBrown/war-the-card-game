@@ -1,10 +1,13 @@
-localStorage.getItem('theme')
-
 document.querySelector('#startGame').addEventListener('click', getDeck)
 document.querySelector('#toggle').addEventListener('click', toggleMode)
+document.querySelector('#draw').addEventListener('click', draw)
 
-let bg = document.querySelector('body')
+let bg = document.querySelector('html')
 let title = document.querySelector('.title')
+
+let theme = localStorage.getItem('theme')
+bg.classList.remove('reg', 'alt', 'light', 'war-bg')
+bg.classList.add(`${theme}`)
 
 let cardImg1 = document.getElementById('player1')
 let cardImg2 = document.getElementById('player2')
@@ -30,22 +33,32 @@ botCountEl.innerText = botCount
 /* TOGGLE LIGHT OR DARK MODE */
 
 function toggleMode() {
-  let theme = Array.from(bg.classList)[0]
+  let theme = bg.classList.value
+  let currentTheme = ''
   if (theme === 'reg') {
     bg.classList.remove('reg')
-    bg.classList.add('dark')
-  } else if (theme === 'dark') {
-    bg.classList.remove('dark')
+    bg.classList.add('alt')
+    currentTheme = 'alt'
+  } else if (theme === 'alt') {
+    bg.classList.remove('alt')
     bg.classList.add('light')
     title.classList.add('red')
+    myCountEl.classList.add('red')
+    botCountEl.classList.add('red')
+    currentTheme = 'light'
   } else if (theme === 'light') {
     bg.classList.remove('light')
     bg.classList.add('war-bg')
     title.classList.remove('red')
+    currentTheme = 'war-bg'
+    myCountEl.classList.remove('red')
+    botCountEl.classList.remove('red')
   } else {
     bg.classList.remove('war-bg')
     bg.classList.add('reg')
+    currentTheme = 'reg'
   }
+  localStorage.setItem('theme', currentTheme)
 }
 
 /* START GAME */
@@ -194,6 +207,8 @@ function determineWinner(cards, c1, c2, cardsWon) {
   } else {
     bg.classList.add('war')
     title.classList.remove('red')
+    myCountEl.classList.remove('red')
+    botCountEl.classList.remove('red')
     warEl.innerHTML = `<button id='war'>WAR!</button>`
     document.querySelector('#draw').removeEventListener('click', draw)
     document.querySelector('#war').addEventListener('click', war)
@@ -212,6 +227,11 @@ function war() {
   const shuffle = `https://www.deckofcardsapi.com/api/deck/${deckId}/shuffle/`
 
   bg.classList.remove('war')
+  if (theme === 'light') {
+    title.classList.add('red')
+    myCountEl.classList.add('red')
+    botCountEl.classList.add('red')
+  }
 
   fetch(url)
     .then(res => res.json()) // parse response as JSON
@@ -222,7 +242,7 @@ function war() {
           .then(res => res.json()) // parse response as JSON
           .then(data => {
             console.log(data)
-            warEl.innerHTML = `<button id='war'>WAR!</button>`
+            warEl.innerHTML = `<button id="war" type="button" name="button">WAR!</button>`
             document.querySelector('#draw').removeEventListener('click', draw)
             document.querySelector('#war').addEventListener('click', war)
           })

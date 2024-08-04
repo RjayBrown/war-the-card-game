@@ -19,21 +19,17 @@ body {
 }
 
 .reg {
-  background-color: rgb(33, 55, 55);
+  background-color: rgb(20, 20, 20);
   color: white;
 }
 
-.dark {
-  background-color: rgb(30, 30, 30);
+.alt {
+  background-color: rgb(15, 25, 22);
   color: white;
-}
-
-.red {
-  color: rgb(155, 0, 0)
 }
 
 .light {
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(220, 220, 220);
   color: rgb(0, 0, 0);
 }
 
@@ -121,42 +117,45 @@ h2,
 }
 
 .winner {
-  color: rgb(255, 203, 73);
+  color: rgb(150, 172, 194);
 }
+
+.red {
+  color: rgb(155, 0, 0)
+}
+
 
 button {
   text-wrap: nowrap;
   width: 150px;
   margin: 2%;
   padding: 15px;
-  color: white;
-  border: none;
+  color: slategray;
+  border: 2px solid rgb(97, 110, 123);
+  color: slategray;
   border-radius: 5px;
   background-color: rgb(23, 23, 23);
-  transition: background-color 250ms, color 250ms;
+  transition: background-color 300ms ease-in, color 300ms ease-in, border 300ms ease-in;
 }
 
 button:hover {
-  background-color: rgb(15, 15, 15);
-  padding: 13px;
-  border: 2px solid black;
-  /* color: rgb(59, 149, 239); */
-  color: goldenrod;
+  background-color: rgb(40, 0, 0);
+  border: 2px solid rgb(155, 0, 0);
+  color: white;
 }
 
 button:active {
   background-color: rgb(10, 10, 10);
-  color: rgb(255, 219, 128)
+  color: slategray
 }
 
 button#war {
-  width: 80%;
   margin: auto;
 }
 
 h1 + button {
   width: 33%;
-  margin: 1.5% auto
+  margin: 15px auto
 }
 
 /* SM + MED */
