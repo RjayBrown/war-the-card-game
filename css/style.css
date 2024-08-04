@@ -153,11 +153,6 @@ button#war {
   margin: auto;
 }
 
-h1 + button {
-  width: 33%;
-  margin: 15px auto
-}
-
 /* SM + MED */
 
 @media screen and (max-width: 860px) {
@@ -171,6 +166,10 @@ h1 + button {
     display: block;
     margin: 15% auto;
     width: 90%;
+  }
+
+  button#war {
+    width: 100px;
   }
 
   h1 {
