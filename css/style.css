@@ -135,7 +135,7 @@ button {
   color: slategray;
   border-radius: 5px;
   background-color: rgb(23, 23, 23);
-  transition: background-color 300ms ease-in, color 300ms ease-in, border 300ms ease-in;
+  transition: background-color 200ms ease-in, color 200ms ease-in, border 200ms ease-in;
 }
 
 button:hover {
@@ -146,7 +146,7 @@ button:hover {
 
 button:active {
   background-color: rgb(10, 10, 10);
-  color: slategray
+  color: white
 }
 
 button#war {
@@ -170,6 +170,9 @@ button#war {
 
   button#war {
     width: 100px;
+    background-color: rgb(40, 0, 0);
+    border: 2px solid rgb(155, 0, 0);
+    color: white;
   }
 
   h1 {
