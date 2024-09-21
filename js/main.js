@@ -1,4 +1,5 @@
 /* PAGE THEME */
+document.querySelector('#toggle').addEventListener('click', toggleMode)
 
 const bg = document.querySelector('html')
 const title = document.querySelector('.title')
@@ -68,7 +69,6 @@ const warEl = document.querySelector('.warEl')
 /* START GAME */
 
 document.querySelector('#startGame').addEventListener('click', getDeck)
-document.querySelector('#toggle').addEventListener('click', toggleMode)
 document.querySelector('#draw').addEventListener('click', draw)
 
 async function getDeck() {

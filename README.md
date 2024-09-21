@@ -2,7 +2,7 @@
 
 Classic war card game
 
-<img width="800" alt="war" src="https://github.com/user-attachments/assets/09d28868-eadd-4621-bc1c-9e619081291d">
+<img width="800" alt="war" src="./img/war.png">
 
 **Link to project:** https://war-thecardgame.netlify.app/
 
