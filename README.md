@@ -12,8 +12,8 @@ Classic war card game
 
 ## Optimizations:
 
-Refactored the API calls from promises to async/await, and I plan to add player avatars, card tracking, and a twist to the game that allows cards to be 'raided' from the other player.
+Refactored the API calls from promises to async/await. I plan to add player avatars, card tracking, and a twist to the game that allows cards to be 'raided' from the other player.
 
 ## Lessons Learned:
 
-Building this project made me much more comfortable with the syntax, and creating the functionality from basic documentation was a great excercise in critical thinking and testing different approaches to solving problems.
+Building this project made me much more comfortable with JavaScript syntax and using features added with ES6/ES7. Creating the functionality from basic documentation was a great excercise in critical thinking and testing different approaches to solving problems.
