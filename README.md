@@ -1,8 +1,8 @@
 # WAR!
 
-Classic war card game
-
 <img width="800" alt="war" src="./img/war.png">
+
+**Classic WAR card game**
 
 **Link to project:** https://war-thecardgame.netlify.app/
 
@@ -16,4 +16,4 @@ Refactored the API calls from promises to async/await. I plan to add player avat
 
 ## Lessons Learned:
 
-Building this project made me much more comfortable with JavaScript syntax and using features added with ES6/ES7. Creating the functionality from basic documentation was a great excercise in critical thinking and testing different approaches to solving problems.
+Building this project made me much more comfortable with JavaScript syntax for newer features added with ES6/ES7. Creating the functionality from basic documentation was a great excercise in critical thinking and testing different approaches to solving problems.
