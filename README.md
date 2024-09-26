@@ -12,7 +12,7 @@
 
 ## Optimizations:
 
-Refactored the API calls from promises to async/await. I plan to add player avatars, card tracking, and a twist to the game that allows cards to be 'raided' from the other player.
+Refactored the API calls from promise chains to async/await. Additional features will include player avatars, card tracking, and a twist to the game that allows cards to be 'raided' from the other player.
 
 ## Lessons Learned:
 
