@@ -1,14 +1,14 @@
 /* PAGE THEME */
-document.querySelector('#toggle').addEventListener('click', toggleMode)
+document.querySelector('#toggle').addEventListener('click', toggleTheme)
 
-const bg = document.querySelector('html')
+const bg = document.querySelector('body')
 const title = document.querySelector('.title')
 
 const theme = localStorage.getItem('theme')
 bg.classList.remove('reg', 'alt', 'light', 'war-bg')
 bg.classList.add(theme)
 
-function toggleMode() {
+function toggleTheme() {
     let theme = bg.classList.value
     let currentTheme = ''
     if (theme === 'reg') {
@@ -55,7 +55,7 @@ botCountEl.innerText = botCount
 
 /*
 
-Planning to add features to customize player names and choose an avatar
+Adding features to customize player names and choose an avatar
 
 */
 
@@ -102,30 +102,34 @@ async function getDeck() {
         console.log(err)
     }
 
-    /* USING PILES TO KEEP TRACK OF CARDS  */
-
-    /*
-    const deckId = localStorage.getItem('deckId')
-
-    myDrawPile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/myDrawPile/add/?cards=`
-    mySidePile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mySidePile/add/?cards=`
-    botDrawPile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botDrawPile/add/?cards=`
-    botSidePile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botSidePile/add/?cards=`
-    */
-
-
 }
+/**********************/
+/*    NEW FEATURES    */
+/**********************/
 
-/* DRAWING CARDS */
+/* USING PILES TO KEEP TRACK OF CARDS  */
+
+/*
+Functinality to be added for tracking player cards. Each player will have two piles, one to draw from, and one to store the cards won. When the draw pile is empty, cards won will be shuffled and moved to the draw pile.
+
+const deckId = localStorage.getItem('deckId')
+
+myDrawPile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/myDrawPile/add/?cards=`
+mySidePile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/mySidePile/add/?cards=`
+botDrawPile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botDrawPile/add/?cards=`
+botSidePile = `https://www.deckofcardsapi.com/api/deck/${deckId}/pile/botSidePile/add/?cards=`
+*/
+
+
+/* PLAYER BOOSTS */
+/*
+Player Boosts (win streak to be activated?)
+    RAID - Steal cards from opponents pile
+    VISION - Ability to see the opponents next card
+*/
 
 async function draw() {
-    /*
 
-    Functinality to be added for tracking player cards. Each player will have two piles, one to draw from, and one to store the cards won. When the draw pile is empty, cards won will be shuffled and moved to the draw pile.
-
-    A potential twist will be added to allow for cards to be 'raided' when certain conditions are met
-
-    */
     const deckId = localStorage.getItem('deckId')
     const url = `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`
     const shuffle = `https://www.deckofcardsapi.com/api/deck/${deckId}/shuffle/`
@@ -184,8 +188,12 @@ async function draw() {
     }
 }
 
+/* DETERMINING WINNER AND WAR CASE */
+
+/*
+Logic for war (single/consecutive draws) and determining the winner will need to be modified when card tracking feature is added
+*/
 function determineWinner(cards, c1, c2, cardsWon) {
-    // figure out how to add war count - # to multiply draw cards in war function API call
 
     for (let card in cards) {
         card.value = 'ACE' ? card.value = 14
@@ -233,11 +241,7 @@ function determineWinner(cards, c1, c2, cardsWon) {
 }
 
 async function war() {
-    /*
 
-    Game currently crashes and needs to be reset when there isn't enough cards in the deck to draw for war, should be fixed when the functionality for tracking cards with piles is added
-
-    */
     let deckId = localStorage.getItem('deckId')
     const url = `https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=8`
     const shuffle = `https://www.deckofcardsapi.com/api/deck/${deckId}/shuffle/`
