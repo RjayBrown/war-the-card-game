@@ -80,10 +80,11 @@ You can [make a contribution](#contributions) and build the next available featu
 ### Core Concepts
 
 - API's & Handling JSON Data
+- Local Storage
 - Promises & Asynchronous Programming
-- JavaScript ES6+ (try/catch & async/await)
+- JavaScript Syntax (ES6+)
 
-Building this project helped me become a lot more comfortable using fetch to make API calls. Refactoring from promise chains to async/await was definitely a challenge at first, but I learned a lot about how promises work and using asynchronous programming features from ES6/ES7 to handle JSON data.
+Building this project helped me become a lot more comfortable using fetch to make API calls. Working with local storage and refactoring from promise chains to async/await was definitely a challenge at first, but I learned a lot about the improved syntax added with ES6/ES7, saving information in the browser, asynchronous programming and handling JSON data.
 
 If you run into trouble, you can click any of the badges above to reference documentation or reach out in the [[🕒 catchup-crew]](https://discord.com/channels/735923219315425401/932892279637700658) or [[❓code-help]](https://discord.com/channels/735923219315425401/735925942559440997) channels in the #100Devs Discord. It's an amazing community space filled with supportive developers happy to answer any questions you may have!
 
