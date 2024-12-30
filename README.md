@@ -1,13 +1,22 @@
-<!-- HOSTED PROJECTS -->
-
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
 <div align="center">
+  <img src="screenshots/project-logo.png" alt="project-name" height="64">
+  <h1 align="center">HTML + CSS + JavaScript <br>(Client-Side)<br> Using Fetch with JSON Data</h1>
+  <h4>Practice using promises and async-await with the Deck of Cards API and contribute a new feature to a small project</h4>
+</div>
+
+<div align="center">
+  <h3>
+    <a href="https://war-thecardgame.netlify.app/" target="_blank" rel="noreferrer noopener">View Project Live</a><br>
+    -•-<br>
+    <a href="#feature-roadmap" target="_blank" rel="noreferrer noopener">Get Started</a>
+  </h3>
   <a href="project-url">
-    <img src="screenshots/project-logo.png" alt="project-name" height="64">
+    <img src="screenshots/project-logo-2.png" alt="project-name" height="64">
   </a>
-<h1 align="center">WAR! The Card Game</h1>
+  <h1 align="center">WAR! The Card Game</h1>
 </div>
 
 <!-- SCREENSHOT -->
@@ -32,9 +41,6 @@
 [![Netlify](https://img.shields.io/badge/NETLIFY-%2300C7B7?style=for-the-badge&logo=NETLIFY&logoColor=%23FFF&logoSize=auto)](https://docs.netlify.com/get-started/)
 
 </div>
-<h3 align="center">
-    <a href="https://war-thecardgame.netlify.app/" target="_blank" rel="noreferrer noopener">View Live</a>
-</h3>
 
 ## Built With
 
@@ -77,7 +83,7 @@ You can [make a contribution](#contributions) and build the next available featu
 - Promises & Asynchronous Programming
 - JavaScript ES6+ (try/catch & async/await)
 
-Building this project helped me become a lot more comfortable working with client-side fetch in JavaScript. Refactoring from promise chains to async/await was definitely a challenge at first, but I learned a lot about how promises work and using asynchronous programming features from ES6/ES7 to handle JSON data.
+Building this project helped me become a lot more comfortable using fetch to make API calls. Refactoring from promise chains to async/await was definitely a challenge at first, but I learned a lot about how promises work and using asynchronous programming features from ES6/ES7 to handle JSON data.
 
 If you run into trouble, you can click any of the badges above to reference documentation or reach out in the [[🕒 catchup-crew]](https://discord.com/channels/735923219315425401/932892279637700658) or [[❓code-help]](https://discord.com/channels/735923219315425401/735925942559440997) channels in the #100Devs Discord. It's an amazing community space filled with supportive developers happy to answer any questions you may have!
 
