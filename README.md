@@ -8,14 +8,10 @@
 </div>
 
 <div align="center">
-  <h3>
-    <a href="https://war-thecardgame.netlify.app/" target="_blank" rel="noreferrer noopener">View Project Live</a><br>
-    -•-<br>
+  <h2>
     <a href="#feature-roadmap" target="_blank" rel="noreferrer noopener">Get Started</a>
-  </h3>
-  <a href="project-url">
-    <img src="screenshots/project-logo-2.png" alt="project-name" height="64">
-  </a>
+  </h2>
+  <img src="screenshots/project-logo-2.png" alt="project-name" height="64">
   <h1 align="center">WAR! The Card Game</h1>
 </div>
 
@@ -40,6 +36,9 @@
 
 [![Netlify](https://img.shields.io/badge/NETLIFY-%2300C7B7?style=for-the-badge&logo=NETLIFY&logoColor=%23FFF&logoSize=auto)](https://docs.netlify.com/get-started/)
 
+<h3>
+    <a href="https://war-thecardgame.netlify.app/" target="_blank" rel="noreferrer noopener">View Project Live</a>
+</h3>
 </div>
 
 ## Built With
